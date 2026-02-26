@@ -1,0 +1,296 @@
+/* =====================
+   ROOT VARIABLES (GLASS)
+   ===================== */
+:root {
+    --bg: #05070d;
+
+    --card: rgba(15, 22, 37, 0.55);
+    --glass-light: rgba(255,255,255,0.08);
+    --glass-soft: rgba(255,255,255,0.04);
+
+    --border: rgba(255,255,255,0.08);
+
+    --accent: #5da9ff;
+    --accent2: #8b5cf6;
+
+    --text: #eaf2ff;
+    --muted: #8b9bb8;
+
+    --glow: rgba(93,169,255,0.25);
+}
+
+/* =====================
+   RESET
+   ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(93,169,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(139,92,246,0.15), transparent 40%),
+        var(--bg);
+
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    color: var(--text);
+    overflow: hidden;
+}
+
+/* =====================
+   GRID BACKGROUND
+   ===================== */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+}
+
+/* =====================
+   GLOW ORBS
+   ===================== */
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.8;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.orb-1 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(93,169,255,0.3), transparent 70%);
+    top: -120px;
+    left: -120px;
+}
+
+.orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(139,92,246,0.3), transparent 70%);
+    bottom: -100px;
+    right: -100px;
+}
+
+/* =====================
+   WRAPPER
+   ===================== */
+.wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 80px 0;
+}
+
+/* =====================
+   GLASS CARD
+   ===================== */
+.card {
+    width: 420px;
+    margin: 0 auto;
+
+    background: var(--card);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 44px 40px 40px;
+    text-align: center;
+
+    box-shadow:
+        0 8px 40px rgba(0,0,0,0.6),
+        0 0 40px var(--glow);
+
+    position: relative;
+}
+
+/* Top gradient accent */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+}
+
+/* Glass shine */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    border-radius: 24px 24px 0 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+    pointer-events: none;
+}
+
+/* =====================
+   AVATAR
+   ===================== */
+.avatar-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+}
+
+.avatar-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent), var(--accent2), var(--accent));
+    animation: spin 6s linear infinite;
+}
+
+.avatar-bg {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: var(--card);
+    backdrop-filter: blur(10px);
+}
+
+.avatar-wrap img {
+    position: absolute;
+    inset: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* =====================
+   TEXT
+   ===================== */
+.name {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+}
+
+.name span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.badge {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 6px 14px;
+    background: var(--glass-soft);
+    border: 1px solid var(--glass-light);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--accent);
+}
+
+.bio {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 24px;
+}
+
+/* =====================
+   GLASS STATS
+   ===================== */
+.stats {
+    display: table;
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 28px;
+    overflow: hidden;
+
+    background: var(--glass-soft);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-light);
+}
+
+.stat {
+    display: table-cell;
+    width: 33.33%;
+    padding: 14px 8px;
+    text-align: center;
+}
+
+.stat:not(:last-child) {
+    border-right: 1px solid var(--glass-light);
+}
+
+.stat-num {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+/* =====================
+   BUTTONS (GLASS)
+   ===================== */
+.btn-group {
+    margin-top: 10px;
+}
+
+.btn {
+    width: 30%;
+    padding: 11px 6px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin: 0 1%;
+    transition: 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.btn-outline {
+    background: var(--glass-soft);
+    border: 1px solid var(--glass-light);
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--accent);
+}
+
+.btn-primary {
+    background: linear-gradient(
+        135deg,
+        rgba(93,169,255,0.85),
+        rgba(139,92,246,0.85)
+    );
+    color: var(--text);
+    border: none;
+    box-shadow: 0 4px 20px rgba(93,169,255,0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(93,169,255,0.6);
+}
