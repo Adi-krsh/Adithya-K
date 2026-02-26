@@ -1,0 +1,238 @@
+/* =====================
+   ROOT VARIABLES (GLASS)
+   ===================== */
+:root {
+    --bg: #05070d;
+
+    --card: rgba(15, 22, 37, 0.55);
+    --glass-light: rgba(255,255,255,0.08);
+    --glass-soft: rgba(255,255,255,0.04);
+
+    --border: rgba(255,255,255,0.08);
+
+    --accent: #5da9ff;
+    --accent2: #8b5cf6;
+
+    --text: #eaf2ff;
+    --muted: #8b9bb8;
+
+    --glow: rgba(93,169,255,0.25);
+}
+
+/* =====================
+   RESET
+   ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(93,169,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(139,92,246,0.15), transparent 40%),
+        var(--bg);
+
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* =====================
+   GRID BACKGROUND
+   ===================== */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+}
+
+/* =====================
+   GLOW ORBS
+   ===================== */
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.8;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.orb-1 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(93,169,255,0.3), transparent 70%);
+    top: -120px;
+    left: -120px;
+}
+
+.orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(139,92,246,0.3), transparent 70%);
+    bottom: -100px;
+    right: -100px;
+}
+
+/* =====================
+   WRAPPER
+   ===================== */
+.wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 100px 0;
+}
+
+/* =====================
+   GLASS CARD
+   ===================== */
+.card {
+    width: 480px;
+    max-width: 90%;
+    margin: 0 auto;
+
+    background: var(--card);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+
+    box-shadow:
+        0 8px 40px rgba(0,0,0,0.6),
+        0 0 40px var(--glow);
+
+    position: relative;
+}
+
+/* Top gradient accent */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent),
+        var(--accent2),
+        transparent
+    );
+}
+
+/* =====================
+   TEXT
+   ===================== */
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.divider {
+    height: 1px;
+    width: 70%;
+    margin: 0 auto 35px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--glass-light),
+        transparent
+    );
+}
+
+/* =====================
+   PROJECT BOX
+   ===================== */
+.project-box {
+    background: var(--glass-soft);
+    border: 1px solid var(--glass-light);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+}
+
+.project-box:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 30px rgba(93,169,255,0.25);
+}
+
+.project-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.project-box p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+/* =====================
+   BUTTONS (GLASS)
+   ===================== */
+.btn-group {
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 11px 18px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.btn-outline {
+    background: var(--glass-soft);
+    border: 1px solid var(--glass-light);
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--accent);
+}
+
+.btn-primary {
+    background: linear-gradient(
+        135deg,
+        rgba(93,169,255,0.9),
+        rgba(139,92,246,0.9)
+    );
+    color: var(--text);
+    border: none;
+    box-shadow: 0 4px 20px rgba(93,169,255,0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(93,169,255,0.6);
+}
