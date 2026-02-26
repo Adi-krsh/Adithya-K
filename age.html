@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- IMPORTANT: these stay normal because css/js are in SAME folder -->
     <link rel="stylesheet" href="age-style.css">
     <link rel="icon" type="image/x-icon" href="search.png">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Syne:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    
     <title>Life Calculator</title>
 </head>
 <body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
     <div class="wrapper">
         <div class="card">
@@ -19,18 +19,18 @@
             <h1 class="title">Life Calculator</h1>
             <p class="subtitle">Discover your journey through time.</p>
 
+            <div class="divider"></div>
+
             <div class="input-wrap">
-                <label>Date of Birth</label>
+                <label class="input-label">Date of Birth</label>
                 <input type="date" id="dob">
             </div>
 
             <div class="btn-group">
-                <button onclick="calculateLife()">
-                    Calculate Age
-                </button>
-
-                <!-- IMPORTANT: go back one folder -->
-                <button onclick="window.location.href='../index.html'">
+                <button class="btn btn-primary" onclick="calculateLife()">Calculate Age</button>
+                
+                <!-- Correct for root folder -->
+                <button class="btn btn-outline" onclick="window.location.href='index.html'">
                     ← Back to Portfolio
                 </button>
             </div>
